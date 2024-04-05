@@ -11,10 +11,16 @@
     "build-only": "vite build",
     "type-check": "vue-tsc --build --force",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "lint:style": "stylelint **/*.{vue,css}",
+    "lint:style": "stylelint **/*.vue",
     "format": "prettier --write src/",
     "spellcheck": "cspell \"src/**/*.{vue,ts,tsx}\"",
-    "prepare": "husky"
+    "prepare": "husky",
+    "commit": "git-cz"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-git"
+    }
   },
   "dependencies": {
     "pinia": "2.1.4",
@@ -43,11 +49,13 @@
     "vitest": "1.4.0",
     "vue-tsc": "2.0.6",
     "stylelint": "16.2.1",
+    "stylelint-config-recommended-vue": "1.5.0",
     "cspell": "8.6.0",
     "husky": "9.0.11",
-    "stylelint-config-standard": "22.0.0",
-    "stylelint-config-prettier": "9.0.5",
-    "stylelint-config-html": "1.1.0",
-    "stylelint-config-vue": "1.0.0"
+    "postcss-html": "1.6.0",
+    "commitizen": "4.3.0",
+    "cz-git": "1.9.0",
+    "@commitlint/config-conventional": "19.0.3",
+    "conventional-changelog-conventionalcommits": "7.0.2"
   }
 }
