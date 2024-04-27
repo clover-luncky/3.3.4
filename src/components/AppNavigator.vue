@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { Bug, Data, LayoutThree, Lightning, Share } from '@icon-park/vue-next'
-import { useEnvStore } from '@/stores/debug'
-import { useRoute } from 'vue-router';
-import { computed, defineComponent, h } from 'vue';
-import { useEditorStore } from '@/stores/editor';
 import { storeToRefs } from 'pinia';
+import { computed, defineComponent, h } from 'vue';
+import { useRoute } from 'vue-router';
+
+import { useEnvStore } from '@/stores/debug'
+import { useEditorStore } from '@/stores/editor';
 
 
 const linkItems = [

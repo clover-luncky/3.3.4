@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Lightning, Share } from '@icon-park/vue-next'
 import { ref } from 'vue'
+
 import {SmoothDndContainer} from '@/components/SmoothDnd/SmoothDndContainer'
 import {SmoothDndDraggable} from '@/components/SmoothDnd/SmoothDndDraggable'
 

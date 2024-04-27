@@ -10,4 +10,3 @@ const chart = {
     }
 }
 </script>
-<style></style>

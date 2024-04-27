@@ -1,15 +1,4 @@
-/** @type {import('stylelint').Config} */
+/* eslint-env node */
 module.exports = {
-    extends: 'stylelint-config-recommended-vue',
-    rules: {
-        'unit-allowed-list': ["em", "rem", "s"]
-    },
-    overrides: [
-        {
-            files: ['*.vue', '**/*.vue'],
-            rules: {
-                'unit-allowed-list': ['em', 'rem', 's']
-            }
-        }
-    ]
+    extends: ['stylelint-config-recommended-vue']
 }

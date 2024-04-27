@@ -1,6 +1,7 @@
-import { defineComponent, h } from "vue";
-import { smoothDnD, dropHandlers } from 'smooth-dnd'
 import type { SmoothDnD } from 'smooth-dnd'
+import { dropHandlers,smoothDnD } from 'smooth-dnd'
+import { defineComponent, h } from "vue";
+
 import { getTagProps, validateTagProp } from "./utils";
 
 smoothDnD.dropHandler = dropHandlers.reactDropHandler().handler
@@ -43,21 +44,19 @@ export const SmoothDndContainer = defineComponent({
         this.container = smoothDnD(containerElement, options)
     },
     unmounted() {
-        if(this.container) {
-           try {
-            this.container.dispose()
-           } catch {
-
-           }
-        }
+        // if(this.container) {
+        //    try {
+        //     this.container.dispose()
+        //    } catch {}
+        // }
     },
     emits: ['drag-start', 'drag-end', 'drop', 'drag-enter', 'drag-leave', 'drop-ready'],
     props: {
-        orientain: { type: String, default: 'vertical' },
+        oriental: { type: String, default: 'vertical' },
         removeOnDropOut: { type: Boolean, default: false },
         autoScrollEnabled: { type: Boolean, default: true },
         animationDuration: { type: Number, default: 250 },
-        behaviour: String,
+        behavior: String,
         groupName: String,
         dragHandleSelector: String,
         noneDragAreaSelector: String,

@@ -1,6 +1,7 @@
-import { defineComponent, h } from "vue";
-import { getTagProps, validateTagProp } from "./utils";
 import { constants } from "smooth-dnd";
+import { defineComponent, h } from "vue";
+
+import { getTagProps, validateTagProp } from "./utils";
 // 基于 composition API 的 Vue组件
 export const SmoothDndDraggable = defineComponent({
     name: 'SmoothDndDraggable',

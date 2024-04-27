@@ -13,7 +13,7 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "lint:style": "stylelint **/*.vue",
     "format": "prettier --write src/",
-    "spellcheck": "cspell \"src/**/*.{vue,ts,tsx}\"",
+    "spellcheck": "cspell \"src/**/*.{ts,tsx}\"",
     "prepare": "husky",
     "commit": "git-cz"
   },

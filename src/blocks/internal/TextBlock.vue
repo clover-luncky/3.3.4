@@ -7,4 +7,3 @@ const text = {
     content: '这是一段文本'
 }
 </script>
-<style></style>

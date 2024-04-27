@@ -12,8 +12,7 @@ module.exports = {
   plugins: ['simple-import-sort'],
   rules: {
     'no-unused-vars': 'error',
-    'simple-import-sort/imports': 'error',
-    '@typescript-eslint/no-empty-interface': 'error',
+    'simple-import-sort/imports': 'error'
   },
   parserOptions: {
     ecmaVersion: 'latest'

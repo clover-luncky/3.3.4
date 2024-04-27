@@ -1,7 +1,8 @@
-import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import type { Block } from '@/types/block'
+import { ref } from 'vue'
+
 import { blocks as mockBlocks } from '@/mock/blocks'
+import type { Block } from '@/types/block'
 
 export const useEditorStore = defineStore('editor', () => {
   const blocks = ref<Block[]>(mockBlocks)
