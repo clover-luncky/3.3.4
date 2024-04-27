@@ -5,9 +5,15 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@icon-park/vue-next':
+    specifier: 1.4.2
+    version: 1.4.2(vue@3.3.4)
   pinia:
     specifier: 2.1.4
     version: 2.1.4(typescript@5.4.2)(vue@3.3.4)
+  smooth-dnd:
+    specifier: 0.12.1
+    version: 0.12.1
   vue:
     specifier: 3.3.4
     version: 3.3.4
@@ -64,6 +70,9 @@ devDependencies:
   eslint:
     specifier: 8.49.0
     version: 8.49.0
+  eslint-plugin-simple-import-sort:
+    specifier: 10.0.0
+    version: 10.0.0(eslint@8.49.0)
   eslint-plugin-vue:
     specifier: 9.17.0
     version: 9.17.0(eslint@8.49.0)
@@ -88,9 +97,6 @@ devDependencies:
   stylelint-config-recommended-vue:
     specifier: 1.5.0
     version: 1.5.0(postcss-html@1.6.0)(stylelint@16.2.1)
-  stylelint-config-standard:
-    specifier: 22.0.0
-    version: 22.0.0(stylelint@16.2.1)
   typescript:
     specifier: 5.4.2
     version: 5.4.2
@@ -1116,6 +1122,15 @@ packages:
   /@humanwhocodes/object-schema@2.0.3:
     resolution: {integrity: sha512-93zYdMES/c1D69yZiKDBj0V24vqNzB/koF26KPaagAfd3P/4gUlh3Dys5ogAK+Exi9QyzlD8x/08Zt7wIKcDcA==}
     dev: true
+
+  /@icon-park/vue-next@1.4.2(vue@3.3.4):
+    resolution: {integrity: sha512-+QklF255wkfBOabY+xw6FAI0Bwln/RhdwCunNy/9sKdKuChtaU67QZqU67KGAvZUTeeBgsL+yaHHxqfQeGZXEQ==}
+    engines: {node: '>= 8.0.0', npm: '>= 5.0.0'}
+    peerDependencies:
+      vue: 3.x
+    dependencies:
+      vue: 3.3.4
+    dev: false
 
   /@isaacs/cliui@8.0.2:
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
@@ -2775,6 +2790,14 @@ packages:
       prettier: 3.0.3
       prettier-linter-helpers: 1.0.0
       synckit: 0.8.8
+    dev: true
+
+  /eslint-plugin-simple-import-sort@10.0.0(eslint@8.49.0):
+    resolution: {integrity: sha512-AeTvO9UCMSNzIHRkg8S6c3RPy5YEwKWSQPx3DYghLedo2ZQxowPFLGDN1AZ2evfg6r6mjBSZSLxLFsWSu3acsw==}
+    peerDependencies:
+      eslint: '>=5.0.0'
+    dependencies:
+      eslint: 8.49.0
     dev: true
 
   /eslint-plugin-vue@9.17.0(eslint@8.49.0):
@@ -4473,6 +4496,10 @@ packages:
       is-fullwidth-code-point: 3.0.0
     dev: true
 
+  /smooth-dnd@0.12.1:
+    resolution: {integrity: sha512-Dndj/MOG7VP83mvzfGCLGzV2HuK1lWachMtWl/Iuk6zV7noDycIBnflwaPuDzoaapEl3Pc4+ybJArkkx9sxPZg==}
+    dev: false
+
   /source-map-js@1.2.0:
     resolution: {integrity: sha512-itJW8lvSA0TXEphiRoawsCksnlf8SyvmFzIhltqAHluXd88pkCd+cXJVHTDwdCr0IzwptSm035IHQktUu1QUMg==}
     engines: {node: '>=0.10.0'}
@@ -4581,23 +4608,6 @@ packages:
       stylelint: ^16.0.0
     dependencies:
       stylelint: 16.2.1(typescript@5.4.2)
-    dev: true
-
-  /stylelint-config-recommended@5.0.0(stylelint@16.2.1):
-    resolution: {integrity: sha512-c8aubuARSu5A3vEHLBeOSJt1udOdS+1iue7BmJDTSXoCBmfEQmmWX+59vYIj3NQdJBY6a/QRv1ozVFpaB9jaqA==}
-    peerDependencies:
-      stylelint: ^13.13.0
-    dependencies:
-      stylelint: 16.2.1(typescript@5.4.2)
-    dev: true
-
-  /stylelint-config-standard@22.0.0(stylelint@16.2.1):
-    resolution: {integrity: sha512-uQVNi87SHjqTm8+4NIP5NMAyY/arXrBgimaaT7skvRfE9u3JKXRK9KBkbr4pVmeciuCcs64kAdjlxfq6Rur7Hw==}
-    peerDependencies:
-      stylelint: ^13.13.0
-    dependencies:
-      stylelint: 16.2.1(typescript@5.4.2)
-      stylelint-config-recommended: 5.0.0(stylelint@16.2.1)
     dev: true
 
   /stylelint@16.2.1(typescript@5.4.2):
