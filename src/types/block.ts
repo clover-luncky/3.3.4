@@ -26,7 +26,8 @@ export type ChartBlock = BaseBlock & {
 export type ImageBlock = BaseBlock & {
     type: 'image',
     props:  {
-        src: string
+        src: string,
+        alt: string
     },
     actions: {
         onEdit: () => void

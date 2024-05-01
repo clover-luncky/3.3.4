@@ -1,5 +1,5 @@
 <template>
-  <div class="layout-wrapper" :class="{ debug }" @click="store.toggle">
+  <div class="layout-wrapper" :class="{ debug }">
     <AppLeftPanel />
     <div class="layout-painter">
       <SmoothDndContainer 
@@ -13,12 +13,18 @@
         }"
       >
         <SmoothDndDraggable v-for="block in blocks" :key="block.id">
-            <BlockRenderer :block="block"></BlockRenderer>
+            <div 
+              :class="{'block-wrapper' : true, debug: debug || activeBlockId === block.id }" 
+              :data-block-type="block.type" 
+              :data-block-id="block.id" 
+              @click="() => editorStore.selectBlock(block)">
+              <BlockRenderer :block="block"></BlockRenderer>
+            </div>
         </SmoothDndDraggable>
       </SmoothDndContainer>
     </div>
     <div>
-      <RightPanel />
+      <AppRightPanel />
     </div>
   </div>
 </template>
@@ -28,7 +34,7 @@
 
   import BlockRenderer from '@/blocks/BlockRenderer.vue'
   import AppLeftPanel from '@/components/AppLeftPanel/AppLeftPanel.vue'
-  import RightPanel from '@/components/RightPanel.vue'
+  import AppRightPanel from '@/components/AppRightPanel/AppRightPanel.vue'
   import { SmoothDndContainer } from '@/components/SmoothDnd/SmoothDndContainer'
   import {SmoothDndDraggable} from '@/components/SmoothDnd/SmoothDndDraggable'
   import { useEnvStore } from '@/stores/debug'
@@ -38,7 +44,7 @@
   const store = useEnvStore()
   const editorStore = useEditorStore()
   const { debug } = storeToRefs(store)
-  const { blocks } = storeToRefs(editorStore)
+  const { blocks, activeBlockId } = storeToRefs(editorStore)
 
   const applyDrag = <T extends any[]>(arr: T, dragResult: DropResult) => {
     const { removedIndex, addedIndex, payload } = dragResult
@@ -68,8 +74,17 @@
 .layout-painter{
   width: 100%;
   overflow-y: auto;
-  background-color: #f5f5f5;
   margin: 20px;
+}
+
+.block-wrapper {
+  padding: 20px;
+  border-radius: 4px;
+  border: 2px dashed transparent;
+  margin: 20px 0;
+}
+.block-wrapper.debug {
+  border-color: #3eaf7c;
 }
 </style>
   

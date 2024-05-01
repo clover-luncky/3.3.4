@@ -1,7 +1,9 @@
 <template>
-    <component :is="blockMaterial"></component>
+    <component :is="blockMaterial" :block="block"></component>
 </template>
 <script setup lang="ts">
+    import { computed } from 'vue';
+
     import type { Block } from '@/types/block'
 
     import ChartBlock from './internal/ChartBlock.vue'
@@ -13,19 +15,18 @@
         block: Block
     }>()
 
-    let blockMaterial:any
+    let blockMaterial = computed(() => {
+        switch (props.block.type) {
+            case 'chart':
+                return ChartBlock
+            case 'image':
+                return ImageBlock
+            case 'text':
+                return TextBlock
+            default: 
+                return FallbackBlock
+        }
+    })
 
-    switch (props.block.type) {
-        case 'chart':
-            blockMaterial = ChartBlock
-            break
-        case 'image':
-            blockMaterial = ImageBlock
-            break
-        case 'text':
-            blockMaterial = TextBlock
-            break
-        default: 
-            blockMaterial = FallbackBlock
-    }
+    
 </script>

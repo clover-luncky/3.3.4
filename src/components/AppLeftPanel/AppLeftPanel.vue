@@ -30,7 +30,7 @@ const toggleMode = (newMode: Mode = null) => {
                 {{mode}}
                 <SmoothDndContainer 
                     class="block-group" 
-                    behaviour="copy" 
+                    behavior="copy" 
                     group-name="blocks" 
                     tag="div"
                     :get-child-payload="(index: number) => index+1"

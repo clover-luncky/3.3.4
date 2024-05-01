@@ -1,14 +1,12 @@
 <template>
     <div>
-        <img :src="image.props.src" :alt="image.props.alt" />
+        <img :src="props.block.props.src" :alt="props.block.props.alt" />
     </div>
 </template>
 <script setup lang="ts">
-const image = {
-    type: 'image',
-    props: {
-        src: 'https://www.baidu.com/img/flexible/logo/pc/result.png',
-        alt: 'Google'
-    }
-}
+import type { ImageBlock } from '@/types/block';
+
+const props = defineProps<{
+    block: ImageBlock
+}>()
 </script>
