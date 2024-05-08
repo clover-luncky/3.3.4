@@ -1,4 +1,5 @@
-rushstack
+behaviour
+echarts
 pinia
 rushstack
 stylelint

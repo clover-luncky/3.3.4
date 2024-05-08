@@ -8,10 +8,8 @@ import type { Block } from '@/types/block';
 import ChartSetting  from './ChartSetting.vue'
 import ImageSetting from './ImageSetting.vue'
 import TextSetting from './TextSetting.vue'
-
 const editorStore = useEditorStore()
 const { selectedBlock } = storeToRefs(editorStore)
-
 let blockRightPanel = computed(() => {
     if(!selectedBlock.value) return null
     switch (selectedBlock.value.type) {
@@ -25,11 +23,9 @@ let blockRightPanel = computed(() => {
         return null
 }
 })
-
 const handleUpdateBlock = (block: Block) => {
     editorStore.updateBlock(block)
 }
-
 </script>
 <template>
     <div class="right-panel-wrapper">
@@ -42,8 +38,6 @@ const handleUpdateBlock = (block: Block) => {
         </div>
     </div>
 </template>
-
-
 <style scoped>
 .right-panel-wrapper {
     display: flex;

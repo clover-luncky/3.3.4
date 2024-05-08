@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import AppNavigator from '@/components/AppNavigator.vue'
 </script>
-
 <template>
   <AppNavigator msg="hello"></AppNavigator>
   <RouterView />

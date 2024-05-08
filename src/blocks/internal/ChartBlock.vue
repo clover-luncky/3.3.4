@@ -9,4 +9,10 @@ const chart = {
         yAxis: [820, 932, 901]
     }
 }
+
+import type { ChartBlock } from '@/types/block'
+
+defineProps<{
+  block: ChartBlock
+}>()
 </script>

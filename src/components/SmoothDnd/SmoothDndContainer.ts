@@ -44,19 +44,21 @@ export const SmoothDndContainer = defineComponent({
         this.container = smoothDnD(containerElement, options)
     },
     unmounted() {
-        // if(this.container) {
-        //    try {
-        //     this.container.dispose()
-        //    } catch {}
-        // }
+        if(this.container) {
+           try {
+            this.container.dispose()
+           } catch {
+            // ignore
+           }
+        }
     },
     emits: ['drag-start', 'drag-end', 'drop', 'drag-enter', 'drag-leave', 'drop-ready'],
     props: {
-        oriental: { type: String, default: 'vertical' },
+        orientation: { type: String, default: 'vertical' },
         removeOnDropOut: { type: Boolean, default: false },
         autoScrollEnabled: { type: Boolean, default: true },
         animationDuration: { type: Number, default: 250 },
-        behavior: String,
+        behaviour: String,
         groupName: String,
         dragHandleSelector: String,
         noneDragAreaSelector: String,
@@ -78,7 +80,7 @@ export const SmoothDndContainer = defineComponent({
         const tagProps = getTagProps(this)
         return h(
             tagProps.value,
-            Object.assign({}, { ref: 'container' }, tagProps),
+            Object.assign({}, { ref: 'container' }, tagProps.props),
             this.$slots.default?.()
         )
     }

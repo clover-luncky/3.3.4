@@ -2,11 +2,12 @@
 import { Lightning, Share } from '@icon-park/vue-next'
 import { ref } from 'vue'
 
-import {SmoothDndContainer} from '@/components/SmoothDnd/SmoothDndContainer'
-import {SmoothDndDraggable} from '@/components/SmoothDnd/SmoothDndDraggable'
+import BlocksDrawer from '@/components/AppLeftPanel/BlocksDrawer.vue'
+import OutlineDrawer from '@/components/AppLeftPanel/OutlineDrawer.vue'
 
+// outline: 大纲；blocks：组件
 type Mode = 'outline' | 'blocks' | null
-const mode = ref<Mode>(null)
+const mode = ref<Mode>('blocks')
 const toggleMode = (newMode: Mode = null) => {
     if(mode.value === newMode) {
         mode.value = null
@@ -26,25 +27,14 @@ const toggleMode = (newMode: Mode = null) => {
             </div>
         </div>
         <Transition name="app-left-panel-drawer">
-            <div v-show="mode" class="left-panel-content">
-                {{mode}}
-                <SmoothDndContainer 
-                    class="block-group" 
-                    behavior="copy" 
-                    group-name="blocks" 
-                    tag="div"
-                    :get-child-payload="(index: number) => index+1"
-                >
-                    <SmoothDndDraggable  v-for="i in 10" :key="i">
-                        <div class="block-item">{{ i }}</div>
-                    </SmoothDndDraggable>
-                </SmoothDndContainer>
+            <div v-if="!!mode" class="app-left-panel-drawer">
+                <div class="app-left-panel-drawer-content">
+                    <component v-if="!!mode" :is="mode === 'outline' ? OutlineDrawer : BlocksDrawer"></component>
+                </div>
             </div>
         </Transition>
     </div>
 </template>
-
-
 <style scoped>
 .left-panel-wrapper {
     position: relative;
@@ -60,6 +50,7 @@ const toggleMode = (newMode: Mode = null) => {
     display: flex;
     flex-direction: column;
     align-items: center;
+    box-shadow: var(--color-gray-300) 1px 0px 0px;
 }
 .btn {
     display: flex;
@@ -76,12 +67,12 @@ const toggleMode = (newMode: Mode = null) => {
     user-select: none;
 }
 .btn:hover {
-    color: var(--color-text);
-    background-color: var(--color-gray-200);
-}
-.btn:active {
     background-color: var(--color-gray-200);
     transition: all 0.2s ease-in-out
+}
+.btn.active {
+    color: var(--color-text);
+    background-color: var(--color-gray-200);
 }
 .left-panel-content {
     flex: 1;

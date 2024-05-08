@@ -22,15 +22,21 @@ export const useEditorStore = defineStore('editor', () => {
     blocks.value = newBlocks
   }
 
-  const updateBlock = (block: Block) => {
-    const index = blocks.value.findIndex((b) => b.id === block.id)
-    if(index !== -1) {
-      blocks.value.splice(index, 1, block)
+  const updateBlock = (id:string, newBlock: Block) => {
+    // const index = blocks.value.findIndex((b) => b.id === block.id)
+    // if(index !== -1) {
+    //   blocks.value.splice(index, 1, block)
+    // }
+    for(const block of blocks.value) {
+      if(block.id === id) {
+        Object.assign(block, newBlock)
+        break
+      }
     }
   }
 
-  const selectBlock = (block: Block) => {
-    activeBlockId.value = block.id
+  const selectBlock = (id: string) => {
+    activeBlockId.value = id
   }
 
   return {

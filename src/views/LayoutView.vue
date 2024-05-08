@@ -13,13 +13,13 @@
         }"
       >
         <SmoothDndDraggable v-for="block in blocks" :key="block.id">
-            <div 
+            <!-- <div 
               :class="{'block-wrapper' : true, debug: debug || activeBlockId === block.id }" 
               :data-block-type="block.type" 
               :data-block-id="block.id" 
-              @click="() => editorStore.selectBlock(block)">
+              @click="() => editorStore.selectBlock(block)"> -->
               <BlockRenderer :block="block"></BlockRenderer>
-            </div>
+            <!-- </div> -->
         </SmoothDndDraggable>
       </SmoothDndContainer>
     </div>
@@ -30,16 +30,16 @@
 </template>
 <script setup lang="ts">
   import { storeToRefs } from 'pinia';
-  import type { DropResult } from 'smooth-dnd'
+  import type { DropResult } from 'smooth-dnd';
 
-  import BlockRenderer from '@/blocks/BlockRenderer.vue'
-  import AppLeftPanel from '@/components/AppLeftPanel/AppLeftPanel.vue'
-  import AppRightPanel from '@/components/AppRightPanel/AppRightPanel.vue'
-  import { SmoothDndContainer } from '@/components/SmoothDnd/SmoothDndContainer'
-  import {SmoothDndDraggable} from '@/components/SmoothDnd/SmoothDndDraggable'
-  import { useEnvStore } from '@/stores/debug'
-  import { useEditorStore } from '@/stores/editor'
-  import { arrayMove } from '@/utils/array'
+  import BlockRenderer from '@/blocks/BlockRenderer.vue';
+  import AppLeftPanel from '@/components/AppLeftPanel/AppLeftPanel.vue';
+  import AppRightPanel from '@/components/AppRightPanel/AppRightPanel.vue';
+  import { SmoothDndContainer } from '@/components/SmoothDnd/SmoothDndContainer';
+  import {SmoothDndDraggable} from '@/components/SmoothDnd/SmoothDndDraggable';
+  import { useEnvStore } from '@/stores/debug';
+  import { useEditorStore } from '@/stores/editor';
+  import { arrayMove } from '@/utils/array';
 
   const store = useEnvStore()
   const editorStore = useEditorStore()
