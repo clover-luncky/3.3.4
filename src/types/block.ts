@@ -19,7 +19,7 @@ export type TextBlock = BaseBlock & {
     type: 'text',
     props: {
         content: string,
-        status?: TextBlockStatus
+        status: TextBlockStatus
     }
 }
 

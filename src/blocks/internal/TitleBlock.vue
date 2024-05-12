@@ -1,12 +1,13 @@
 <template>
-<div>
-
-</div>
+<div class="title">Title</div>
 </template>
-
-<script setup lang='ts'>
-</script>
-
 <style scoped>
-
+.title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0;
+}
+.title:hover {
+    flex: 1;
+}
 </style>

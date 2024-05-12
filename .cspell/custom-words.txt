@@ -1,6 +1,10 @@
 behaviour
+commitlint
+conventionalcommits
 echarts
 pinia
 rushstack
 stylelint
+tiptap
+veaury
 vuejs

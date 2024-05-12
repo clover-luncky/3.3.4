@@ -82,7 +82,7 @@ export const getBlocksDefaultData = (type: BlockType): Block => {
                 type: 'image',
                 label: '图片',
                 props: {
-                    src: 'https://www.baidu.com/img/flexible/logo/pc/result.png',
+                    src: 'https://images.pexels.com/photos/2577274/pexels-photo-2577274.jpeg?auto=compress&cs=tinysrgb&w=1600',
                     alt: ''
                 }
             }

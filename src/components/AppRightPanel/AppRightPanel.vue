@@ -7,14 +7,15 @@ import type { Block } from '@/types/block';
 
 import ChartSetting  from './ChartSetting.vue'
 import ImageSetting from './ImageSetting.vue'
-import TextSetting from './TextSetting.vue'
+// import TextSetting from './TextSetting.vue'
 const editorStore = useEditorStore()
 const { selectedBlock } = storeToRefs(editorStore)
 let blockRightPanel = computed(() => {
     if(!selectedBlock.value) return null
     switch (selectedBlock.value.type) {
     case 'text':
-        return TextSetting
+        return null
+        // return TextSetting
     case 'image':
         return ImageSetting
     case 'chart':

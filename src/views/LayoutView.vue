@@ -12,13 +12,13 @@
           editorStore.updateBlocks(newBlocks)
         }"
       >
-        <SmoothDndDraggable v-for="block in blocks" :key="block.id">
+        <SmoothDndDraggable v-for="(block, index) in blocks" :key="block.id">
             <!-- <div 
               :class="{'block-wrapper' : true, debug: debug || activeBlockId === block.id }" 
               :data-block-type="block.type" 
               :data-block-id="block.id" 
               @click="() => editorStore.selectBlock(block)"> -->
-              <BlockRenderer :block="block"></BlockRenderer>
+              <BlockRenderer :block="block" :i="index"></BlockRenderer>
             <!-- </div> -->
         </SmoothDndDraggable>
       </SmoothDndContainer>
@@ -44,7 +44,8 @@
   const store = useEnvStore()
   const editorStore = useEditorStore()
   const { debug } = storeToRefs(store)
-  const { blocks, activeBlockId } = storeToRefs(editorStore)
+  // const { blocks, activeBlockId } = storeToRefs(editorStore)
+  const { blocks } = storeToRefs(editorStore)
 
   const applyDrag = <T extends any[]>(arr: T, dragResult: DropResult) => {
     const { removedIndex, addedIndex, payload } = dragResult

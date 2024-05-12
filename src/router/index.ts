@@ -10,7 +10,14 @@ const router = createRouter({
   },{
       path: '/app/dataSource',
       name: 'dataSource',
-      component: defineAsyncComponent(() => import('../views/DataSourceView.vue'))
+      component: defineAsyncComponent(() => import('../views/DataSourceView.vue')),
+      children: [{
+        path: ':id',
+        component: defineAsyncComponent(() => import('../views/DataSourceContent/DataSourceContent.vue')),
+      }, {
+        path: '',
+        redirect: '/app/dataSource/1'
+      }]
     }, {
       path: '/app/layout',
       name: 'layout',

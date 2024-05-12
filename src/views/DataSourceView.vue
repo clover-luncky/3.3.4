@@ -1,12 +1,16 @@
 <template>
-  <div>
-    <h1>dataSource {{ store.count  }}----{{ store.double }}</h1>
-    <button @click="store.increment">+</button>
-    <button @click="store.decrement">-</button>
+  <div class="ds-wrapper">
+      <DataSourceLeftPanel />
   </div>
-</template>
-<script setup lang="ts">
-import {useCounterStore} from '@/stores/counter'
-const store = useCounterStore()
-</script>
+  </template>
   
+  <script setup lang='ts'>
+  import DataSourceLeftPanel from '@/components/DataSourceLeftPanel.vue'
+  </script>
+  
+  <style scoped>
+  .ds-wrapper {
+    display: flex;
+    height: 100%;
+  }
+  </style>

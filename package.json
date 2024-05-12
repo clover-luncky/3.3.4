@@ -61,6 +61,12 @@
       "@commitlint/config-conventional": "19.0.3",
       "conventional-changelog-conventionalcommits": "7.0.2",
       "vee-validate": "4.12.6",
-      "nanoid": "5.0.4"
+      "nanoid": "5.0.4",
+      "@tiptap/core": "2.0.4",
+      "@tiptap/vue-3": "2.0.4",
+      "@tiptap/pm": "2.0.4",
+      "@tiptap/starter-kit": "2.0.4",
+      "veaury": "2.3.12",
+      "@glideapps/glide-data-grid": "5.2.1"
     }
   }

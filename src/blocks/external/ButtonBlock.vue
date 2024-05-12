@@ -1,11 +1,10 @@
 <template>
-    <div>Button</div>
+    <div class="button">{{ title || 'Button' }}</div>
 </template>
-
-<script setup lang='ts'>
+<script setup lang="ts">
 defineProps({
     title: {
-        type: String,
+        type:  String,
         required: true
     },
     onClick: {
@@ -13,8 +12,18 @@ defineProps({
         required: true
     }
 })
+
 </script>
-
 <style scoped>
-
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 36px;
+    padding: 0 12px;
+    border-radius: 8px;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-white);
+    background-color: var(--color-primary);
+}
 </style>
