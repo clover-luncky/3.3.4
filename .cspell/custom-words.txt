@@ -2,6 +2,7 @@ behaviour
 commitlint
 conventionalcommits
 echarts
+glideapps
 pinia
 rushstack
 stylelint

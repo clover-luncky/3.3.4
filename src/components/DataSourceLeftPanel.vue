@@ -15,9 +15,9 @@
 </template>
 
 <script setup lang="ts">
+import { DataSheet } from '@icon-park/vue-next'
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
-import { DataSheet } from '@icon-park/vue-next'
 
 const route = useRoute()
 

@@ -1,6 +1,6 @@
 <template>
-  <div class="about">
-    <h1>Actions</h1>
-  </div>
+  <FlowEditor />
 </template>
-  
+<script lang="ts" setup>
+import FlowEditor from '@/components/FlowEditor/FlowEditor.vue'
+</script>
