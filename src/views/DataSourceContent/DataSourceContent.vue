@@ -1,14 +1,17 @@
 <template>
-<div class="data-source-content-wrapper">
+  <div class="data-source-content-wrapper">
     <div class="data-source-render">
-
+      <r-dataSource />
+      <!-- <ReactDataSource /> -->
     </div>
-</div>
+  </div>
 </template>
 
-<script setup lang='ts'>
-// import { applyPureReactInVue } from 'veaury'
-
+<script setup lang="ts">
+import { applyPureReactInVue } from 'veaury'
+// @ts-ignore
+import ReactDataSource from './react_app/ReactDataSource'
+const RDataSource = applyPureReactInVue(ReactDataSource)
 </script>
 
 <style scoped>

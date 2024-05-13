@@ -7,13 +7,19 @@ import VueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    vue(),
-    vueJsx(),
-    VueDevTools(),
-  ],
+  plugins: [vue(), vueJsx(), VueDevTools()],
   server: {
-    port: 8888
+    port: 8803
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vue-common-lib': ['vue', 'vue-router', 'pinia'],
+          'react-common-lib': ['react', 'react-dom', '@glideapps/glide-data-grid']
+        }
+      }
+    }
   },
   resolve: {
     alias: {
