@@ -10,6 +10,7 @@
 </template>
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
+
 import AppNavigator from '@/components/AppNavigator.vue'
 </script>
 <style scoped>

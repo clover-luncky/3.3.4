@@ -1,32 +1,34 @@
 <template>
-<div class="ds-left-panel-wrapper">
-  <div class="ds-left-panel-content">
-    <router-link
-      v-for="item in dataLists"
-      :key="item.id"
-      :class="['ds-item', activeLink.includes(item.id) && 'active']"
-      :to="`/app/dataSource/${item.id}`"
-    >
-      <div class="item-label">{{ item.id }} 100w 行数据，非常流畅</div>
-    </router-link>
+  <div class="ds-left-panel-wrapper">
+    <div class="ds-left-panel-content">
+      <router-link
+        v-for="item in dataLists"
+        :key="item.id"
+        :class="['ds-item', activeLink.includes(item.id) && 'active']"
+        :to="`/app/dataSource/${item.id}`"
+      >
+        <data-sheet />
+        <div class="item-label">{{ item.id }} 100w 行数据，非常流畅</div>
+      </router-link>
+    </div>
   </div>
-</div>
 </template>
 
-<script setup lang='ts'>
-import { computed } from 'vue';
+<script setup lang="ts">
+import { computed } from 'vue'
 import { useRoute } from 'vue-router'
+import { DataSheet } from '@icon-park/vue-next'
 
 const route = useRoute()
 
 const activeLink = computed(() => route.path)
 
 type dataType = {
-  id: string,
+  id: string
   name: string
 }
 let dataLists: dataType[] = []
-for(let i = 1 ;i <=5; i++) {
+for (let i = 1; i <= 5; i++) {
   dataLists.push({
     id: `${i}`,
     name: `数据源${i}`

@@ -1,5 +1,6 @@
 import { defineAsyncComponent } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
+
 import AppView from '../views/AppView.vue'
 
 const router = createRouter({
