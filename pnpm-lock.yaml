@@ -25,10 +25,10 @@ dependencies:
     version: 2.0.4(@tiptap/core@2.0.4)(@tiptap/pm@2.0.4)(vue@3.3.4)
   '@vue-flow/additional-components':
     specifier: 1.3.3
-    version: 1.3.3(@vue-flow/core@1.21.2)(vue@3.3.4)
+    version: 1.3.3(@vue-flow/core@1.33.8)(vue@3.3.4)
   '@vue-flow/core':
-    specifier: 1.21.2
-    version: 1.21.2(vue@3.3.4)
+    specifier: 1.33.8
+    version: 1.33.8(vue@3.3.4)
   nanoid:
     specifier: 5.0.4
     version: 5.0.4
@@ -1989,22 +1989,22 @@ packages:
       path-browserify: 1.0.1
     dev: true
 
-  /@vue-flow/additional-components@1.3.3(@vue-flow/core@1.21.2)(vue@3.3.4):
+  /@vue-flow/additional-components@1.3.3(@vue-flow/core@1.33.8)(vue@3.3.4):
     resolution: {integrity: sha512-AZhz0diM7VIN7MGKODiuqiu+xiujFQSs2UdiThgNI5vGSwwizd0g9dGzB+LK0Dt4FCRJ1g64xzxqbrAFFfzuFw==, tarball: https://registry.npmmirror.com/@vue-flow/additional-components/-/additional-components-1.3.3.tgz}
     peerDependencies:
       '@vue-flow/core': ^1.0.0
       vue: ^3.2.25
     dependencies:
-      '@vue-flow/core': 1.21.2(vue@3.3.4)
+      '@vue-flow/core': 1.33.8(vue@3.3.4)
       d3-selection: 3.0.0
       d3-zoom: 3.0.0
       vue: 3.3.4
     dev: false
 
-  /@vue-flow/core@1.21.2(vue@3.3.4):
-    resolution: {integrity: sha512-XsxE6o85zWjyjEZuxZYT02I1aujWptRfw+8GMzAiGXzsl2Fxy3TRaLDkmqcSlrWRU3y4X6o1fX6WEKPIVkURQQ==, tarball: https://registry.npmmirror.com/@vue-flow/core/-/core-1.21.2.tgz}
+  /@vue-flow/core@1.33.8(vue@3.3.4):
+    resolution: {integrity: sha512-dwHRtMrp9Wje4b0mmZiU00VSWcPFnOAn+g/x6WBHpVhW4KCv3ckHsfZF3p1ApjKJYv/w4lntsN+cJmkIz7dJqw==, tarball: https://registry.npmmirror.com/@vue-flow/core/-/core-1.33.8.tgz}
     peerDependencies:
-      vue: ^3.2.25
+      vue: ^3.3.0
     dependencies:
       '@vueuse/core': 10.9.0(vue@3.3.4)
       d3-drag: 3.0.0
