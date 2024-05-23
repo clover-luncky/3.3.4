@@ -1,49 +1,63 @@
 <template>
-<div @drop="drag.onDrop" style="height: 100%;">
+  <div @drop="onDrop" style="height: 100%">
     <VueFlow
-        :nodes="nodes"
-        :class="{ dark }"
-        class="basicflow"
-        :default-viewport="{ zoom: 1.5 }"
-        :min-zoom="0.2"
-        :max-zoom="4"
-        style="height: 100%;"
-        @dragover="drag.onDragOver"
-        @dragleave="drag.onDragLeave"
+      v-model="elements"
+      :class="{ dark }"
+      class="basicflow"
+      :default-viewport="{ zoom: 1.5 }"
+      :min-zoom="0.2"
+      :max-zoom="4"
+      style="height: 100%"
+      @dragover="onDragOver"
+      @dragleave="onDragLeave"
     >
-        <Transition name="app-left-panel-drawer">
-                <div class="app-left-panel-drawer">
-                    <div class="app-left-panel-drawer-content vue-flow-box">
-                        <div class="vue-flow__node-input" :draggable="true" @dragstart="drag.onDragStart($event, 'input')">Input Node</div>
-                        <div class="vue-flow__node-default" :draggable="true" @dragstart="drag.onDragStart($event, 'default')">Default Node</div>
-                        <div class="vue-flow__node-output" :draggable="true" @dragstart="drag.onDragStart($event, 'output')">Output Node</div>
-                    </div>
-                </div>
-            </Transition>
-        <Background :gap="12" />
-        <MiniMap />
-        <Controls />
+      <Drawer>
+        <div
+          class="vue-flow__node-input"
+          :draggable="true"
+          @dragstart="onDragStart($event, 'input')"
+        >
+          Input Node
+        </div>
+        <div
+          class="vue-flow__node-default"
+          :draggable="true"
+          @dragstart="onDragStart($event, 'default')"
+        >
+          Default Node
+        </div>
+        <div
+          class="vue-flow__node-output"
+          :draggable="true"
+          @dragstart="onDragStart($event, 'output')"
+        >
+          Output Node
+        </div>
+      </Drawer>
+      <Background :gap="12" />
+      <MiniMap />
+      <Controls />
 
-        <Panel position="top-right" class="controls">
-            <div class="control-btn" title="Reset Transform" @click="resetTransform">
-                <Resting />
-            </div>
-            <div class="control-btn" title="Shuffle Node Positions" @click="updatePos">
-                <Shuffle />
-            </div>
-            <div class="control-btn" title="Log toObject" @click="logToObject">
-                <Log />
-            </div>
-            <div class="control-btn" title="Toggle Dark Mode" @click="toggleDarkMode">
-                <Sun v-if="dark" />
-                <Moon v-else />
-            </div>
-        </Panel>
+      <Panel position="top-right" class="controls">
+        <div class="control-btn" title="Reset Transform" @click="resetTransform">
+          <Resting />
+        </div>
+        <div class="control-btn" title="Shuffle Node Positions" @click="updatePos">
+          <Shuffle />
+        </div>
+        <div class="control-btn" title="Log toObject" @click="logToObject">
+          <Log />
+        </div>
+        <div class="control-btn" title="Toggle Dark Mode" @click="toggleDarkMode">
+          <Sun v-if="dark" />
+          <Moon v-else />
+        </div>
+      </Panel>
     </VueFlow>
-</div>
+  </div>
 </template>
 
-<script setup lang='ts'>
+<script setup lang="ts">
 import '@vue-flow/core/dist/style.css'
 import '@vue-flow/core/dist/theme-default.css'
 
@@ -51,17 +65,16 @@ import { Log, Moon, Resting, Shuffle, Sun } from '@icon-park/vue-next'
 import { Background, Controls, MiniMap } from '@vue-flow/additional-components'
 import { isNode, Panel, useVueFlow, VueFlow } from '@vue-flow/core'
 import { ref } from 'vue'
-
-import { initialElements } from './initial-elements'
-import {useDragAndDrop} from './useDnD'
+import { storeToRefs } from 'pinia'
+// import { initialElements } from './initial-elements'
+import { useDragAndDrop } from './useDnD'
 const drag = useDragAndDrop()
-
+const { onDrop, onDragOver, onDragLeave, onDragStart } = drag
 // const { onConnect, addEdges } = useVueFlow()
 
 const nodes = ref([])
 
 // onConnect(addEdges)
-
 
 // const { onDragStart } = storeToRefs(useDragAndDrop)
 
@@ -70,35 +83,36 @@ const { setTransform, toObject, onNodeDragStop, onConnect, addEdges } = useVueFl
 onNodeDragStop((e) => console.log('drag stop', e))
 
 onConnect((params) => addEdges(params))
-
-const elements = ref(initialElements)
+const { elements } = storeToRefs(drag)
+// const elementsValue = ref(drag.elements)
+console.log('elements', elements)
 
 function resetTransform() {
-    return setTransform({
-        x: 0,
-        y: 0,
-        zoom: 1
-    })
+  return setTransform({
+    x: 0,
+    y: 0,
+    zoom: 1
+  })
 }
 
 function updatePos() {
-    return elements.value.forEach((el) => {
-        if(isNode(el)) {
-            el.position = {
-                x: Math.random() * 400,
-                y: Math.random() * 400
-            }
-        }
-    })
+  return elements.value.forEach((el) => {
+    if (isNode(el)) {
+      el.position = {
+        x: Math.random() * 400,
+        y: Math.random() * 400
+      }
+    }
+  })
 }
 
 function logToObject() {
-    return console.log(toObject())
+  return console.log(toObject())
 }
 
 const dark = ref(false)
 function toggleDarkMode() {
-    dark.value = !dark.value
+  dark.value = !dark.value
 }
 
 // 1. 实现Pick
@@ -216,7 +230,7 @@ function toggleDarkMode() {
 
 // type Func = (user: User) => void;
 // type Param = ParamType<Func>;
-// type AA = ParamType<string>; 
+// type AA = ParamType<string>;
 
 // 8. 实现If
 // type If<C extends boolean, T, F> = C extends true ? T : F
@@ -232,6 +246,21 @@ function toggleDarkMode() {
 // type MyEqual<A, B> = (<T>() => T extends A ? 1: 2) extends <T>() => T extends B ? 1 : 2 ? true :false
 // type Includes<T extends readonly any[], U> = T extends [infer F, ...infer R] ? MyEqual<F, U> extends true ? true : Includes<R, U> : false
 // type isPillarMen = Includes<['Kars', 'Esdisi', 'Wamuu', 'Santana'], 'Dio'>
+
+// 11. 实现push
+// type Push<T extends any[], U> = [...T, U]
+// type Result = Push<[1, 2], 3>
+
+// 12. 实现unshift
+// type Unshift<T extends any[], U> = [U, ...T]
+// type Result = Unshift<[1, 2], 0>
+
+// 13. 实现Parameters
+// type MyParamters<T extends (...args: any) => any> = T extends (...args: infer P) => any ? P : never
+// const foo = (arg1: string, arg2: number): void => {}
+// const foo1 = () => {}
+// type FunctionParamsType = MyParamters<typeof foo>
+// type FunctionParamsType1 = MyParamters<typeof foo1>
 </script>
 
 <style scoped>
@@ -295,51 +324,50 @@ function toggleDarkMode() {
 }
 
 .basicflow .vue-flow__controls {
-    z-index: 11;
+  z-index: 11;
 }
 
 .vue-flow-box div {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
-
 </style>
 <style lang="css">
-.basicflow.dark{
-    background:#000000;
-    color:#fffffb
+.basicflow.dark {
+  background: #000000;
+  color: #fffffb;
 }
-.basicflow.dark .vue-flow__node{
-    background:hsl(0,0%,10%);
-    color:#fffffb
+.basicflow.dark .vue-flow__node {
+  background: hsl(0, 0%, 10%);
+  color: #fffffb;
 }
-.basicflow.dark .vue-flow__node.selected{
-    background:hsl(0,0%,20%);
-    border:1px solid hotpink
+.basicflow.dark .vue-flow__node.selected {
+  background: hsl(0, 0%, 20%);
+  border: 1px solid hotpink;
 }
-.basicflow .vue-flow__controls{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center
+.basicflow .vue-flow__controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
-.basicflow.dark .vue-flow__controls{
-    border:1px solid #FFFFFB
+.basicflow.dark .vue-flow__controls {
+  border: 1px solid #fffffb;
 }
-.basicflow .vue-flow__controls .vue-flow__controls-button{
-    border:none;
-    border-right:1px solid #eee
+.basicflow .vue-flow__controls .vue-flow__controls-button {
+  border: none;
+  border-right: 1px solid #eee;
 }
-.basicflow.dark .vue-flow__controls .vue-flow__controls-button{
-    background:hsl(0,0%,20%);
-    fill:#fffffb;
-    border:none
+.basicflow.dark .vue-flow__controls .vue-flow__controls-button {
+  background: hsl(0, 0%, 20%);
+  fill: #fffffb;
+  border: none;
 }
-.basicflow.dark .vue-flow__controls .vue-flow__controls-button:hover{
-    background:hsl(0,0%,30%)
+.basicflow.dark .vue-flow__controls .vue-flow__controls-button:hover {
+  background: hsl(0, 0%, 30%);
 }
-.basicflow.dark .vue-flow__edge-textbg{
-    fill:#292524
+.basicflow.dark .vue-flow__edge-textbg {
+  fill: #292524;
 }
-.basicflow.dark .vue-flow__edge-text{
-    fill:#fffffb
+.basicflow.dark .vue-flow__edge-text {
+  fill: #fffffb;
 }
 </style>

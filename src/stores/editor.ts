@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { computed,ref } from 'vue'
+import { computed, ref } from 'vue'
 
 import { blocks as mockBlocks } from '@/mock/blocks'
 import type { Block } from '@/types/block'
@@ -22,13 +22,13 @@ export const useEditorStore = defineStore('editor', () => {
     blocks.value = newBlocks
   }
 
-  const updateBlock = (id:string, newBlock: Block) => {
+  const updateBlock = (id: string, newBlock: Block) => {
     // const index = blocks.value.findIndex((b) => b.id === block.id)
     // if(index !== -1) {
     //   blocks.value.splice(index, 1, block)
     // }
-    for(const block of blocks.value) {
-      if(block.id === id) {
+    for (const block of blocks.value) {
+      if (block.id === id) {
         Object.assign(block, newBlock)
         break
       }
