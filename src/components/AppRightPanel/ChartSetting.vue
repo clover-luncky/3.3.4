@@ -40,7 +40,7 @@ watch([values], ([newValues]) => {
 })
 
 const data = [{
-    label: 'Echarts-Echarts',
+    label: 'Echarts',
     value: 'echarts'
 }, {
     label: 'Canvas',

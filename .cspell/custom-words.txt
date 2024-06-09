@@ -6,9 +6,11 @@ conventionalcommits
 echarts
 glideapps
 pinia
+reszie
 rushstack
 stylelint
 textbg
 tiptap
 veaury
 vuejs
+zrender
