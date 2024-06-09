@@ -44,12 +44,13 @@
 import '@vue-flow/core/dist/style.css'
 import '@vue-flow/core/dist/theme-default.css'
 
-import { Log, Resting, Shuffle, DarkMode, Config } from '@icon-park/vue-next'
+import { Config,DarkMode, Log, Resting, Shuffle } from '@icon-park/vue-next'
 import { Background, Controls, MiniMap } from '@vue-flow/additional-components'
 import { isNode, Panel, useVueFlow, VueFlow } from '@vue-flow/core'
+import { ref } from 'vue'
+
 import BlocksDrawer from '@/components/AppLeftPanel/BlocksDrawer.vue'
 import OutlineDrawer from '@/components/AppLeftPanel/OutlineDrawer.vue'
-import { ref } from 'vue'
 
 import { initialElements } from './initial-elements'
 

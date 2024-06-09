@@ -16,6 +16,7 @@
 <script setup lang="ts">
 import { FullScreenOne, Iphone, LaptopComputer } from '@icon-park/vue-next'
 import type { Icon } from '@icon-park/vue-next/lib/runtime'
+
 import type { PreviewType } from './type'
 const props = defineProps<{
   previewMode?: PreviewType

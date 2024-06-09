@@ -39,7 +39,9 @@
       "veaury": "2.3.12",
       "@glideapps/glide-data-grid": "5.2.1",
       "@vue-flow/core": "1.33.8",
-      "@vue-flow/additional-components": "1.3.3"
+      "@vue-flow/additional-components": "1.3.3",
+      "copy-text-to-clipboard": "3.2.0",
+      "vue-json-pretty": "2.2.4"
     },
     "devDependencies": {
       "@rushstack/eslint-patch": "1.3.3",

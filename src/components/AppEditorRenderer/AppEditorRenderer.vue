@@ -1,16 +1,17 @@
 <template>
   <div class="layout-content">
-    <keepalive>
+    <KeepAlive>
       <component
         :is="previewMode === 'laptop' ? LaptopPreviewer : MobilePreviewer"
         :preview-mode="previewMode"
         @preview-mode-change="handleModeChange"
       />
-    </keepalive>
+    </KeepAlive>
   </div>
 </template>
 <script setup lang="ts">
 import { ref } from 'vue'
+
 import LaptopPreviewer from './LaptopPreviewer.vue'
 import MobilePreviewer from './MobilePreviewer.vue'
 import type { PreviewType } from './type'

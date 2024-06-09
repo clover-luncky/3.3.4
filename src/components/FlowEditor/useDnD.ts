@@ -4,7 +4,7 @@ import { ref, watch } from 'vue'
 
 import { initialElements as elements1 } from './initial-elements'
 
-let id = 0
+const id = 0
 
 export const useDragAndDrop = defineStore('drag', () => {
   const elements = ref(elements1)

@@ -1,5 +1,5 @@
 <template>
-  <div class="layout-runner-content-wrapper">
+  <div class="layout-runner-content-wrapper tiny-scrollbar">
     <div class="layout-runner-content-header">
       <div class="layout-runner-content-navigator"></div>
       <div class="layout-runner-content-title">Byelide</div>
@@ -17,7 +17,7 @@ import BlocksRenderer from '@/blocks/BlocksRenderer.vue'
   display: flex;
   flex-direction: column;
   flex: 1;
-  overflow: hidden;
+  overflow: auto;
 }
 
 .layout-runner-content-header {

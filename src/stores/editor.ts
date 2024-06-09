@@ -23,12 +23,9 @@ export const useEditorStore = defineStore('editor', () => {
   }
 
   const updateBlock = (id: string, newBlock: Block) => {
-    // const index = blocks.value.findIndex((b) => b.id === block.id)
-    // if(index !== -1) {
-    //   blocks.value.splice(index, 1, block)
-    // }
     for (const block of blocks.value) {
       if (block.id === id) {
+        console.log('newBlock', newBlock)
         Object.assign(block, newBlock)
         break
       }

@@ -1,25 +1,19 @@
 <template>
-    <input 
-        class="content" 
-        type="text" 
-        v-model="content" 
-        v-bind="contentAttr"
-    />
-    <p style="color: red;">
-        {{ errors.content  }}
-    </p>
-    <input 
-        v-for="field in fields" 
-        :key="field.key"
-        v-model="field.value"
-    />
-    <div>
-        <button @click="() => push('')">动态添加</button>
-        <button @click="() => console.log(JSON.stringify(values))">查看数据</button>
+    <div class="text-setting">
+        <div>{{ props.block.type }}</div>
+        <input class="content-input" v-bind="content" />
+        <input v-for="field in fields" :key="field.key" class="content-input" v-model="field.value" />
+        <button class="add-button" @click="push(new Date().toLocaleTimeString())">添加</button>
+        <vue-json-pretty 
+            showIcon
+            showLineNumber
+            editable
+            :data="block"
+        />
     </div>
 </template>
 <script setup lang="ts">
-import { defineRule,useFieldArray,useForm } from 'vee-validate'
+import { useFieldArray, useForm } from 'vee-validate'
 import { watch } from 'vue';
 
 import type { TextBlock } from '@/types/block'
@@ -27,45 +21,49 @@ const props = defineProps<{
     block: TextBlock
 }>()
 
-defineRule('required', (value: string) => {
-    if(!value || !value.length) {
-        return 'This field is required'
+const { fields, push } = useFieldArray('blocks')
+
+const { values,  defineInputBinds } = useForm({
+    initialValues: {
+        content: props.block.props.content
     }
-    return true
 })
+
+const content = defineInputBinds('content')
 
 // eslint-disable-next-line no-unused-vars
 const emit = defineEmits<{(event: 'change', block: TextBlock): void}>()
-
-const { values, errors, defineField,isFieldTouched } = useForm({
-    validationSchema: {
-        content: 'required'
-    },
-    initialValues: {
-        content: props.block.props.content,
-        person: {
-            name: '张三',
-            info: {
-                name: '李四',
-                hobby: ['篮球', '足球']
-            }
-        }
-    }
+watch([values], ([newValues]) => {
+    emit('change', { ...props.block, props: {
+        ...props.block.props, ...newValues
+    } })
 })
-const [content, contentAttr] = defineField('content')
-
-watch(content, (newVal) => {
-    console.log('isFieldTouched',isFieldTouched('content'))
-    const block = {...props.block, props: { ...props.block.props, content: newVal }}
-    emit('change', block)
-})
-
-const {fields,push} = useFieldArray('person.info.hobby')
-
 
 </script>
 <style>
-.content {
+.text-setting {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 8px;
+    font-size: var(--font-size-large);
+    border-radius: 8px;
+}
+.content-input {
     width: 100%;
+    height: 32px;
+    padding: 0 8px;
+    border: 1px solid var(--color-gray-300);
+    border-radius: 8px;
+    outline-style: none;
+    color: var(--color-gray-800);
+}
+.add-button {
+    margin-top: 6px;
+    padding: 4px 12px;
+    border-radius: 8px;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-gray-300);
+    cursor: pointer;
 }
 </style>

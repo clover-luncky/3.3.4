@@ -1,13 +1,15 @@
 <template>
-    <LaptopPreviewer  />
+    <LaptopPreviewer v-if="device === 'laptop'" v-memo="[device === 'laptop']" />
+    <MobilePreviewer v-if="device === 'mobile'" v-memo="[device === 'mobile']" />
 </template>
 
 <script setup lang='ts'>
-import { onUnmounted,ref } from 'vue'
+import { onMounted, onUnmounted,ref } from 'vue'
 
 import { isMobileTablet } from '@/utils/detect'
 
 import LaptopPreviewer from '../AppPreviewer/LaptopPreviewer.vue'
+import MobilePreviewer from '../AppPreviewer/MobilePreviewer.vue'
 
 const device = ref<'laptop' | 'mobile'>('laptop')
 
@@ -20,6 +22,14 @@ const resize = () => {
     device.value = 'laptop'
   }
 }
+
+onMounted(() => {
+  const isMobile = isMobileTablet()
+  if(isMobile) {
+    device.value = 'mobile'
+  }
+  window.addEventListener('resize', resize, false)
+})
 
 onUnmounted(() => {
   window.removeEventListener('resize', resize, false)

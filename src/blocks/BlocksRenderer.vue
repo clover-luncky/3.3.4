@@ -14,12 +14,14 @@
 </template>
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
+import { type DropResult } from 'smooth-dnd'
+import { toRaw } from 'vue'
+
 import { SmoothDndContainer } from '@/components/SmoothDnd/SmoothDndContainer'
 import { SmoothDndDraggable } from '@/components/SmoothDnd/SmoothDndDraggable'
 import { useEditorStore } from '@/stores/editor'
-import { type DropResult } from 'smooth-dnd'
-import { toRaw } from 'vue'
 import { arrayMove } from '@/utils/array'
+
 import BlockRenderer from './BlockRenderer.vue'
 const editorStore = useEditorStore()
 const { blocks } = storeToRefs(editorStore)

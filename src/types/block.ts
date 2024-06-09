@@ -28,7 +28,7 @@ export type ChartType = 'echarts' | 'canvas' | 'svg'
 export type ChartBlock = BaseBlock & {
     type: 'chart',
     props:  {
-        type: ChartType
+        chartType: ChartType
     }
 }
 

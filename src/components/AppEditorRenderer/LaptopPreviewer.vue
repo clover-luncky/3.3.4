@@ -15,9 +15,10 @@
 </template>
 <script setup lang="ts">
 import { ref } from 'vue'
-import type { PreviewType } from './type'
+
 import AppLaptopPreviewer from '../AppPreviewer/LaptopPreviewer.vue'
 import PreviewModeSwitcher from './PreviewModeSwitcher.vue'
+import type { PreviewType } from './type'
 const props = defineProps<{
   previewMode?: PreviewType
 }>()
@@ -29,8 +30,9 @@ function greet(mode: PreviewType) {
   emit('preview-mode-change', mode)
 }
 
-const runner = ref<HTMLElement | null>()
+const runner = ref<HTMLElement | null>(null)
 function toggle() {
+  console.log('runner', runner)
   if (!runner.value) return
   if (document.fullscreenElement) {
     document.exitFullscreen()
@@ -54,5 +56,27 @@ function toggle() {
     0 20px 40px rgb(62 65 86 / 10%);
 }
 .layout-runner-navigator {
+  height: 42px;
+  flex-shrink: 0;
+  display: grid;
+  font-size: var(--font-size-normal);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: center;
+  gap: 8;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding: 0 16px;
+  border-bottom: 1px solid var(--color-gray-200);
+  background-color: var(--color-gray-100);
+}
+.address-wrapper {
+  grid-column: span 2 / span 2;
+  border-radius: 6px;
+  background-color: var(--color-gray-200);
+  color: var(--color-gray-800);
+  padding: 2px 32px 2px 12px;
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 </style>
