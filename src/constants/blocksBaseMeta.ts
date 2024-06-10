@@ -107,7 +107,7 @@ export const getBlocksDefaultData = (type: BlockType): Block => {
                 type: 'chart',
                 label: '图表',
                 props: {
-                    type: 'echarts'
+                    chartType: 'echarts'
                 }
             }
         case 'button': 

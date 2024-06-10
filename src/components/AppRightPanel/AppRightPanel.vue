@@ -16,6 +16,8 @@
     </div>
 </template>
 <script setup lang="ts">
+import 'vue-json-pretty/lib/styles.css'
+
 import { computed } from 'vue';
 
 import { blocksBaseMeta } from '@/constants/blocksBaseMeta'
@@ -25,6 +27,7 @@ import type { Block } from '@/types/block';
 import ChartSetting  from './ChartSetting.vue'
 import SchemaExporter  from './SchemaExporter.vue'
 import TextSetting  from './TextSetting.vue'
+
 const editorStore = useEditorStore()
 const blocksMap = computed(() => {
     const { blocks } = editorStore

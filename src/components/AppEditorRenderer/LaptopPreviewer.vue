@@ -79,4 +79,5 @@ function toggle() {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 </style>

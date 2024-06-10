@@ -25,7 +25,7 @@ export type TextBlock = BaseBlock & {
 
 // 图表模块
 export type ChartType = 'echarts' | 'canvas' | 'svg'
-export type ChartBlock = BaseBlock & {
+export interface ChartBlock extends BaseBlock {
     type: 'chart',
     props:  {
         chartType: ChartType

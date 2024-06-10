@@ -85,7 +85,7 @@ const Icon = defineComponent({
               }">
                   <Icon :type="link.value" :active="activeLink.includes(link.value)" /> 
               </div>
-              <span class="item.title">{{ link.label }}</span>
+              <span class="item-title">{{ link.label }}</span>
               <div
                 class="item-border"
                 :style="activeLink.includes(link.value) ? { background: link.borderColor } : {}"

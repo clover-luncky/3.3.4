@@ -9,6 +9,7 @@
         showIcon
         showLineNumber
         editable
+        virtual
         :data="currentBlockInfo"
     />
 </div>
